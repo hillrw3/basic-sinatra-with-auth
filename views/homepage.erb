@@ -1,3 +1,15 @@
 <form id="to_register" action="/registration" method="get">
-  <button id="to_register">Register</button>
+  <button id="registration_button">Register</button>
+</form>
+<div class="centered">
+  <h3>OR</h3>
+</div>
+<form action="/login" method="post">
+  <dl>
+    <dt><label for="username">Username:</label></dt>
+    <dd><input id="username" name="username"></dd>
+    <dt><label for="password">Password:</label></dt>
+    <dd><input type="password" id="password" name="password"></dd>
+  </dl>
+    <button id="login">Login</button>
 </form>

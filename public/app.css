@@ -1,6 +1,12 @@
-#to_register {
+#registration_button {
     width: 540px;
     height: 150px;
+    font-size: 2em;
+    margin-top: 25px;
+}
+#login {
+    width: 540px;
+    height: 50px;
     font-size: 2em;
     margin-top: 25px;
 }
@@ -9,7 +15,26 @@
     width: 540px;
     margin: auto;
 }
+dd {
+    margin: 0;
+}
+dt {
+    margin-top: 15px;
+}
 
+dd input {
+    width: 100%;
+}
+.centered {
+    width: 100%;
+    text-align: center;
+}
+h3 {
+    margin-top: 60px;
+    font-size: 1.5em;
+}
 #registration {
     margin-top: 20px;
 }
+
+
