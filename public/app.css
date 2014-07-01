@@ -1,18 +1,18 @@
 #registration_button {
-    width: 540px;
+    width: 100%;
     height: 150px;
     font-size: 2em;
     margin-top: 25px;
 }
 #login {
-    width: 540px;
+    width: 100%;
     height: 50px;
     font-size: 2em;
     margin-top: 25px;
 }
 
 #wrapper {
-    width: 540px;
+    width: 620px;
     margin: auto;
 }
 dd {
@@ -24,6 +24,8 @@ dt {
 
 dd input {
     width: 100%;
+    margin: 0;
+    box-sizing: border-box;
 }
 .centered {
     width: 100%;

@@ -14,7 +14,7 @@ class App < Sinatra::Application
 
   get "/" do
     if session[:user]
-      @user = session[:user][0]
+      @user = @user_database.find(session[:user])
       erb :logged_in_homepage
     else
       erb :homepage
@@ -34,11 +34,11 @@ class App < Sinatra::Application
   end
 
   post '/login' do
-    active_user = @user_database.all.select do |user_hashes|
+    active_user = @user_database.all.find do |user_hashes|
       user_hashes[:username] == params[:username] && user_hashes[:password] == params[:password]
     end
     unless active_user == []
-      session[:user] = active_user
+      session[:user] = active_user[:id]
     else
       flash[:notice] = "User not found"
     end
