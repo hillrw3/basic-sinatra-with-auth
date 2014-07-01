@@ -1,0 +1,15 @@
+#to_register {
+    width: 540px;
+    height: 150px;
+    font-size: 2em;
+    margin-top: 25px;
+}
+
+#wrapper {
+    width: 540px;
+    margin: auto;
+}
+
+#registration {
+    margin-top: 20px;
+}
