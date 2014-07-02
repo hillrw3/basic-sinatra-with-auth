@@ -1,9 +1,16 @@
 <h2>Welcome <%= @user[:username] %></h2>
 <ul>Other users
   <% @other_users.each do |user_hashes| %>
-    <li><%= user_hashes[:username] %></li>
+    <li><%= user_hashes[:username] %>
+      <form method="post" action="/delete_user/<%= user_hashes[:id] %>">
+        <input type="hidden" name="_method" value="post">
+        <button type='submit' value="Delete User">Delete User</button>
+      </form>
+    </li>
   <% end %>
 </ul>
+
+
 <form method="post" action="/logout">
   <button type="submit" id="logout">Log Out</button>
 </form>

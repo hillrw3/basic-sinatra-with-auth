@@ -12,6 +12,12 @@ class App < Sinatra::Application
     @user_database = UserDatabase.new
   end
 
+  post '/delete_user/:id' do
+    p params[:id]
+    @user_database.delete(params[:id].to_i)
+    redirect '/'
+  end
+
   get "/" do
     if session[:user]
       @user = @user_database.find(session[:user])
@@ -44,8 +50,8 @@ class App < Sinatra::Application
         flash[:registration_error] = "Username already taken"
         redirect back
       end
-      redirect back
     end
+    redirect back
   end
 
   post '/login' do
