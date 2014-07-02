@@ -39,4 +39,12 @@ h3 {
     margin-top: 20px;
 }
 
+.green {
+    color: limegreen;
+}
+
+.error {
+    color:red;
+}
+
 
