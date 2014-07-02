@@ -83,5 +83,20 @@ describe UserDatabase do
         user_database.delete(1)
       }.to raise_error(UserDatabase::UserNotFoundError)
     end
+
+    it "successfully adds and deletes multiple users" do
+      user_database.insert(:username => "first", :password => "password")
+      user_database.insert(:username => "jetaggart", :password => "password")
+      user_database.insert(:username => "last", :password => "password")
+      user_database.insert(:username => "rob", :password => "pass")
+      user_database.delete(2)
+      p user_database.all
+      user_database.delete(2)
+      p user_database.all
+      user_database.delete(2)
+      p user_database.all
+      expect(user_database.all).to eq([{:username => "first", :password => "password", :id => 1}])
+
+    end
   end
 end

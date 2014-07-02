@@ -19,7 +19,11 @@ class UserDatabase
   end
 
   def delete(id)
+    magic_number = offset_id(id)
     @users.delete_at(offset_id(id)) or raise UserNotFoundError
+    @users.each do |user_hash|
+      user_hash[:id] > magic_number ? user_hash[:id] -= 1 : user_hash[:id]
+    end
   end
 
   def all
