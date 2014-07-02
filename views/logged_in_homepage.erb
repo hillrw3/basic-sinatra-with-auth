@@ -1,4 +1,9 @@
 <h2>Welcome <%= @user[:username] %></h2>
+<ul>Other users
+  <% @other_users.each do |user_hashes| %>
+    <li><%= user_hashes[:username] %></li>
+  <% end %>
+</ul>
 <form method="post" action="/logout">
   <button type="submit" id="logout">Log Out</button>
 </form>
