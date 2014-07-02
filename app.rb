@@ -14,8 +14,6 @@ class App < Sinatra::Application
 
   post '/delete_user/:id' do
     @user_database.delete(params[:id].to_i)
-    p @other_users
-    p @user_database.all
     redirect '/'
   end
 
