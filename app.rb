@@ -35,11 +35,16 @@ class App < Sinatra::Application
     elsif username == ""
       flash[:registration_error] = "No username entered"
     else
-      @user_database.insert({:username => username, :password => password})
-      flash[:notice] = "Thank you for registering"
-      redirect '/'
+      if @user_database.all.find { |user_hashes| user_hashes[:username] == username } == nil
+        @user_database.insert({:username => username, :password => password})
+        flash[:notice] = "Thank you for registering"
+        redirect '/'
+      else
+        flash[:registration_error] = "Username already taken"
+        redirect back
+      end
+      redirect back
     end
-    redirect back
   end
 
   post '/login' do
