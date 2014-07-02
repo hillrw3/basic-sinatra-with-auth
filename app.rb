@@ -15,6 +15,7 @@ class App < Sinatra::Application
   get "/" do
     if session[:user]
       @user = @user_database.find(session[:user])
+      @other_users = @user_database.all - Array[@user]
       erb :logged_in_homepage
     else
       erb :homepage
