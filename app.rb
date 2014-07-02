@@ -28,16 +28,25 @@ class App < Sinatra::Application
   post "/registration" do
     username = params[:username]
     password = params[:password]
-    @user_database.insert({:username => username, :password => password})
-    flash[:notice] = "Thank you for registering"
-    redirect '/'
+    if username == "" && password == ""
+      flash[:registration_error] = "No username or password entered"
+    elsif password == ""
+      flash[:registration_error] = "No password entered"
+    elsif username == ""
+      flash[:registration_error] = "No username entered"
+    else
+      @user_database.insert({:username => username, :password => password})
+      flash[:notice] = "Thank you for registering"
+      redirect '/'
+    end
+    redirect back
   end
 
   post '/login' do
     active_user = @user_database.all.find do |user_hashes|
       user_hashes[:username] == params[:username] && user_hashes[:password] == params[:password]
     end
-    unless active_user == []
+    if active_user
       session[:user] = active_user[:id]
     else
       flash[:notice] = "User not found"
