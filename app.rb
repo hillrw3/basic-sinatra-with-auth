@@ -37,7 +37,7 @@ class App < Sinatra::Application
     active_user = @user_database.all.find do |user_hashes|
       user_hashes[:username] == params[:username] && user_hashes[:password] == params[:password]
     end
-    unless active_user == []
+    if active_user
       session[:user] = active_user[:id]
     else
       flash[:notice] = "User not found"
